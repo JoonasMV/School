@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Tehtäväsarja 3</h1>
+<section>
+    <h2>Th1</h2>
+    <button onClick="kertoma()">Kertoma</button>
+
+    <script>
+        function kertoma(){
+            let n = prompt("Halutun luvun kertoma");
+            let kertoma = 1;
+            while (n>1){
+                kertoma = n*kertoma
+                n--
+            }
+        prompt("Luvun "+n+" kertoma on "+kertoma)
+        }
+    </script>
+</section>
+
+<section>
+    <h2>Th2</h2>
+    <button onClick="neljur()">Neliöjuuri</button>
+    <script>
+        function neljur(){
+            let n = prompt()
+            if (n > 0){
+                alert(Math.sqrt(n))
+            } else {
+                alert("Luvun pitää olla positiivinen")
+            }
+        }
+    </script>
+</section>
+
+<section>
+    <h2>Th3</h2>
+    <button onClick="kVuosi()">Karkausvuodet</button>
+
+    <script>
+        document.write("<ul>")
+        function kVuosi(){
+            let alku = +prompt("Ensimmäinen vuosi");
+            let loppu = +prompt("Viimeinen vuosi");
+
+            for (let i = alku;i<=loppu;i++) {
+                if (i % 4 == 0 && i % 100 != 0 || i % 400 == 0){
+                    document.write("<li>"+i+"</li>")
+                }
+            }
+        }
+        document.write("</ul>")
+    </script>
+</section>
+
+<section>
+    <h2>Th4</h2>
+    <button onClick="arpa()">Noppien heitto</button>
+    <script>
+        function arpa(){
+            let n = prompt("Noppien määrä")
+            let summa = 0;
+            for(let i = 0;i<n;i++){
+                summa += (Math.ceil(Math.random()*6))
+            }
+            alert("Noppien summa = "+summa)
+        }
+    </script>
+</section>
+
+<section>
+    <h2>th5</h2>
+    <button onClick="alkuluku()">Alkuluku testaus</button>
+    <script>
+        function alkuluku(){
+            let n = prompt();
+            let v = 1;
+            for(let i = 2;i<n;i++){
+                if(n % i == 0){
+                    v = 0;
+                }
+            }
+            if (v == 1 && n != 1){
+                alert("Luku on alkuluku")
+            } else {
+                alert("Luku ei ole alkuluku")
+            }
+        }
+    </script>
+</section>
+
+<section>
+    <h2>th6</h2>
+    <button onClick="nopTod()">Noppia^2</button>
+    <script>
+        function nopTod(){
+            let nopat = +prompt("Noppien määrä")
+            let summa = +prompt("Kiinnostava summa")
+            let osuma = 0;
+            //noppa
+            //Math.ceil(Math.random()*6)
+
+            for (let i=0;i<10000;i++){
+                let saatuSumma=0;
+                for (let j=0;j<nopat;j++){
+                    let noppa = Math.ceil(Math.random()*6)
+                    saatuSumma = saatuSumma + noppa
+                    //console.log(saatuSumma)
+                    }
+                if(saatuSumma == summa){
+                    osuma++;
+                }
+            }
+            alert("Halutun summan mahdollisuus "+osuma/100+"%")
+
+        }
+    </script>
+</section>
+
+<section>
+    <h2>Th7</h2>
+    <button onClick="bingo()">Bingolappu</button>
+
+    <p id="bingoNumerot"></p>
+
+    <script>
+        function bingo(){
+            let bingoNumerot = [];
+
+            for(let n = 1;n<=25;n++) {
+                //arvotaan - arvo
+                let rand = Math.floor(Math.random()*4)
+                //arvotaan luku
+                let num = 4*n-rand
+                bingoNumerot[n] = num
+                document.write(n+". numero "+bingoNumerot[n]+"<br>")
+            }
+        }
+    </script>
+</section>
+
+</body>
+</html>
+
