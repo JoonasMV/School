@@ -29,6 +29,176 @@
 </section>
 
     <h2>Th2</h2>
+    <button onClick="osallistujat()">Osallistujat</button>
+    <ol id="nimilista">
+
+    </ol>
+    <script>
+        function osallistujat(){
+            let osallistujat = +prompt("Kuinka monta osallistujaa?");
+            let joukko = [];
+            //osallistujen kysely
+            for (let i=0;i<osallistujat;i++){
+                joukko[i] = prompt((i+1)+". osallistuja")
+            }
+            //listaan tulostus
+            let html = "";
+            for (let i=0;i<joukko.length;i++){
+                html += "<li>"+joukko[i]+"</li>";
+            }
+            document.getElementById("nimilista").innerHTML = html;
+        }
+    </script>
+<section>
+    <h2>Th3</h2>
+    <button onClick="koirat()">Koiruudet</button>
+    <ul id="koiraLista">
+
+    </ul>
+    <script>
+        function koirat(){
+            let koirat =[]
+            for (let i=0;i<6;i++){
+                koirat[i] = prompt((i+1)+". koira")
+            }
+            koirat.sort();
+            koirat.reverse();
+            let lista = "";
+            for (let i=0;i<6;i++){
+                lista += "<li>"+koirat[i]+"</li>";
+            }
+            document.getElementById("koiraLista").innerHTML = lista;
+        }
+    </script>
+</section>
+
+<section>
+    <h2>Th4</h2>
+    <button onClick="luvut()">Lukulukija</button>
+    <p>0 lopettaa numeroiden kysymisen</p>
+    <ul id="lukulista">
+
+    </ul>
+    <script>
+        function luvut(){
+            let luvut = []
+            let j = 0;
+            while(true) {
+                let luku = +prompt("Anna luku! 0 lopettaa")
+                if (luku == 0) {
+                    break;
+                }
+                luvut[j] = luku;
+                j++;
+            }
+            luvut.sort((b,a) => a-b);
+            let num = "";
+            for (let i = 0;i<luvut.length;i++){
+                num += "<li>"+luvut[i]+"</li>";
+            }
+                document.getElementById("lukulista").innerHTML = num;
+
+        }
+    </script>
+</section>
+
+<section>
+    <h2>Th5</h2>
+    <button onClick="toistoLuku()">Toisto luku</button>
+    <script>
+        function toistoLuku(){
+            let luvut = []
+            let i = 0;
+            while (true){
+                let luku = +prompt("Anna luku")
+                if(luvut.includes(luku)){
+                    alert("Luku "+luku+" on jo annettu!")
+                    break;
+                }
+                luvut[i] = luku;
+                i++;
+            }
+        }
+    </script>
+</section>
+
+<section>
+    <h2>Th6</h2>
+    <button onClick="mediaani()">Mediaani</button>
+    <p>0 lopettaa numeroiden kysymisen</p>
+    <script>
+        function mediaani(){
+            let luvut = [];
+            let i = 0;
+            let mediaani = 0;
+            while(true){
+                let luku = +prompt("Haluttujen lukujen mediaani");
+                if (luku == 0){
+                    luvut.sort((a,b) => a-b);
+                    let n = (Math.floor(luvut.length+1)/2) -1
+                    n = parseInt(n)
+                    if (luvut.length == 0){
+                        alert("Mediaania ei voida laskea")
+                        break;
+                    } else if(luvut.length % 2 != 0){
+                        mediaani = luvut[n];
+                    } else {
+                        mediaani = (luvut[n] + luvut[n+1])/2;
+                    }
+                    alert("Lukujen mediaani "+mediaani);
+                    break;
+                }
+                luvut[i] = luku;
+                i++;
+            }
+        }
+    </script>
+</section>
+
+<section>
+    <h2>Th7</h2>
+    <button onClick="aanestys()">Äänestyskone</button>
+    <script>
+        'use strict'
+        function aanestys(){
+            let ehdokkaat = +prompt("Ehdokkaiden lukumäärä");
+            let aanestajat = +prompt("Äänestäjien lukumäärä");
+            let aanet =[]
+            //[0,0,0] taulukko ääniä varten
+            for (let i = 0;i<ehdokkaat+1;i++){
+                aanet[i]=0;
+            }
+            //nostetaan äänestetyn ehdokkaan indeksissä olevaa lukua yhdellä
+            for (let i = 0;i<aanestajat;i++) {
+                let aanestetty = +prompt("Äänestäjä no." + (i + 1) + "\n" +
+                    "Valitse ehdokkaista 1-" + ehdokkaat + "\n" +
+                    "0 on tyhjä ääni");
+
+                if (aanestetty > ehdokkaat || aanestetty < 0){
+                    aanestetty = 0;
+                }
+
+                if(aanestetty == 0){
+                    continue
+                }
+                aanet[aanestetty] +=1;
+            }
+            //löydetään suurin luku tai monta samaa suurinta lukua
+            let indexes = []
+            let maxAanet = Math.max(...aanet)
+            for (let i = 0;i<aanet.length;i++){
+                if (aanet[i] == maxAanet){
+                    indexes.push(i)
+                }
+            }
+            if (indexes.length == 1){
+                alert("Vaalien voittaja on ehdokas "+indexes+". "+maxAanet+" äänellä.")
+            } else {
+                alert("Ehdokkaat "+indexes+" saivat "+maxAanet+" ääntä")
+            }
+        }
+    </script>
+</section>
 
 </body>
 </html>
