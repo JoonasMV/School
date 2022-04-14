@@ -54,7 +54,7 @@ function laskija(){
     vastaus.innerText = ans
 }
 //-----------------------------------------------------------
-
+//Testi
 //Th4
 const pics = [
     {
