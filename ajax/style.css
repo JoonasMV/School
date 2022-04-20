@@ -1,0 +1,20 @@
+#sarjat {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#otsikko {
+    text-decoration: underline;
+    font-size: 20px;
+    text-align: center;
+}
+
+article {
+    border-style: solid;
+    margin: 5px;
+    padding: 10px;
+    box-shadow: 5px 5px 10px 1px #000;
+    max-width: 290px;
+}
+
+
